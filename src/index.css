@@ -1,0 +1,84 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 222 47% 11%;
+    --foreground: 210 40% 98%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+
+    --primary: 252 95% 85%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+
+    --muted: 217 33% 17%;
+    --muted-foreground: 215.4 16.3% 56.9%;
+
+    --accent: 262 83% 58%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 263.4 70% 50.4%;
+
+    --radius: 0.5rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+.garage-display {
+  @apply flex min-h-screen w-full flex-col items-center justify-center p-4;
+  background: linear-gradient(to bottom, hsl(222, 47%, 11%), hsl(222, 47%, 8%));
+}
+
+.message-container {
+  @apply flex h-64 w-full max-w-md flex-col items-center justify-center rounded-lg border border-border bg-muted p-8 shadow-lg transition-all duration-500;
+}
+
+.message-text {
+  @apply text-center text-3xl font-bold leading-relaxed text-primary;
+}
+
+.qr-container {
+  @apply flex h-96 w-full max-w-md flex-col items-center justify-center rounded-lg border border-border bg-background p-4 shadow-lg transition-all duration-500;
+}
+
+.qr-code {
+  @apply h-full w-full rounded-lg bg-white p-2;
+}
+
+.status-badge {
+  @apply mt-4 rounded-full px-3 py-1 text-xs font-medium;
+}
+
+.status-connected {
+  @apply bg-green-500/20 text-green-400;
+}
+
+.status-disconnected {
+  @apply bg-red-500/20 text-red-400;
+}
+
+.status-connecting {
+  @apply bg-yellow-500/20 text-yellow-400;
+}
