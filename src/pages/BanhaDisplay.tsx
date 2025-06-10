@@ -1,4 +1,3 @@
-import React from "react";
 import GarageDisplay from "../components/GarageDisplay";
 import { LOCATIONS } from "@/lib/mqtt";
 

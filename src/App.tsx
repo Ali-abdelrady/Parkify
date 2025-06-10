@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import NotFound from "./pages/NotFound";
 import ObourDisplay from "./pages/ObourDisplay";
 import BanhaDisplay from "./pages/BanhaDisplay";
+import ScreensSelector from "./pages/ScreensSelector";
 
 const queryClient = new QueryClient();
 
@@ -16,7 +17,7 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Navigate to="/obour" replace />} />
+          <Route path="/" element={<ScreensSelector />} />
           <Route path="/obour" element={<ObourDisplay />} />
           <Route path="/banha" element={<BanhaDisplay />} />
           <Route path="*" element={<NotFound />} />
