@@ -35,7 +35,7 @@ function GarageDisplay({ TOPICS }) {
         console.log(`Received on ${topic}: ${messageContent[0]}`);
 
         if (topic === TOPICS.MESSAGE) {
-          setMessage(messageContent || "Welcome to Parkify");
+          setMessage(messageContent || "Parkify Exit Gate ;)");
         } else if (topic === TOPICS.QR_CODE) {
           if (messageContent && messageContent.trim() !== "") {
             setQrCodeUrl(messageContent);
@@ -72,13 +72,20 @@ function GarageDisplay({ TOPICS }) {
     if (qrCodeUrl) {
       const timer = setTimeout(() => {
         setQrCodeUrl(null);
-        setMessage("Parkify Exit Gate ;)");
-        setMessage("Welcome to Parkify");
-      }, 15000); // 15 seconds
+      }, 10000); // 15 seconds
 
       return () => clearTimeout(timer); // Clean up the timer on re-renders
     }
-  }, [qrCodeUrl, message]);
+  }, [qrCodeUrl]);
+  useEffect(() => {
+    if (message) {
+      const timer = setTimeout(() => {
+        setMessage("Parkify Exit Gate ;)");
+      }, 5000); // 15 seconds
+
+      return () => clearTimeout(timer); // Clean up the timer on re-renders
+    }
+  }, [message]);
   const getStatusBadgeClass = () => {
     switch (connectionStatus) {
       case "connected":
