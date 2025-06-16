@@ -5,7 +5,7 @@ import MessageDisplay from "./MessageDisplay";
 import QRCodeDisplay from "./QRCodeDisplay";
 
 function GarageDisplay({ TOPICS }) {
-  const [message, setMessage] = useState<string>("Welcome to Parkify");
+  const [message, setMessage] = useState<string>("Parkify Exit Gate ;)");
   const [qrCodeUrl, setQrCodeUrl] = useState<string | null>(null);
   const [connectionStatus, setConnectionStatus] =
     useState<MQTTConnectionStatus>("disconnected");
@@ -68,7 +68,17 @@ function GarageDisplay({ TOPICS }) {
       service.disconnect();
     };
   }, [toast]);
+  useEffect(() => {
+    if (qrCodeUrl) {
+      const timer = setTimeout(() => {
+        setQrCodeUrl(null);
+        setMessage("Parkify Exit Gate ;)");
+        setMessage("Welcome to Parkify");
+      }, 15000); // 15 seconds
 
+      return () => clearTimeout(timer); // Clean up the timer on re-renders
+    }
+  }, [qrCodeUrl, message]);
   const getStatusBadgeClass = () => {
     switch (connectionStatus) {
       case "connected":
