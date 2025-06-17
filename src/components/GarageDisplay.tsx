@@ -72,7 +72,7 @@ function GarageDisplay({ TOPICS }) {
     if (qrCodeUrl) {
       const timer = setTimeout(() => {
         setQrCodeUrl(null);
-      }, 10000); // 15 seconds
+      }, 20000); // 15 seconds
 
       return () => clearTimeout(timer); // Clean up the timer on re-renders
     }
